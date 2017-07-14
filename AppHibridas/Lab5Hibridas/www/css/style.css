@@ -1,0 +1,22 @@
+/* Empty. Add your own CSS if you like */
+li{  
+    cursor:pointer;
+    width:300px;  
+    text-align: left;
+}  
+li:hover{
+	background-color:#f9f9f9;  
+}
+p {
+	font-size: 150%;
+	background-color: ;	
+}
+#city{
+	width: 220px;
+	font-size: 150%;	
+} 
+
+#inputText{
+	border-color: #0c60ee;
+    background-color: #387ef5;
+} 

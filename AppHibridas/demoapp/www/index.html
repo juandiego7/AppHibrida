@@ -1,0 +1,34 @@
+<!DOCTYPE html>  
+ <html>  
+      <head>  
+           <title>Webslesson Tutorial | AngularJS Tutorial - Make Autocomplete Textbox</title>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+           <style>  
+           li{  
+                cursor:pointer;  
+           }  
+           li:hover  
+           {  
+                background-color:#f9f9f9;  
+           }  
+           </style>  
+           <script src="js/controllers.js"></script>
+      </head>  
+      <body>  
+           <br /><br />  
+           <div class="container" style="width:500px;">  
+                <h3 align="center">AngularJS Tutorial - Make Autocomplete Textbox</h3>  
+                <div ng-app="myapp" ng-controller="usercontroller">  
+                     <label>Enter Country Name</label>  
+                     <input type="text" name="country" id="country" ng-model="country" ng-keyup="complete(country)" class="form-control" />  
+                     <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">  
+                          <li class="list-group-item" ng-repeat="countrydata in filterCountry" ng-click="fillTextbox(countrydata)">{{countrydata}}</li>  
+                     </ul>  
+                     <p>{{country}}</p>
+                </div>  
+           </div>
+           
+      </body>  
+ </html>  
+ 

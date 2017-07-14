@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Lab5Hibridas</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="weather">
+    <ion-pane>
+      <ion-header-bar class="bar-stable bar bar-header bar-positive">
+        <h1 class="title">Weather</h1>
+      </ion-header-bar>
+      <ion-content >
+        <div ng-app="starter" ng-controller="weather" align="center" style="border-color: blue;">
+          <div id="inputText">
+            <div style="display: inline-block;" >
+              <label class=" item item-input item-input-wrapper"  >
+                <input type="text" placeholder="New city" name="city" id="city" ng-model="city" ng-keyup="complete(city)" class="form-control"/>
+              </label>  
+              <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">  
+                  <li class="list-group-item" ng-repeat="citydata in filterCity" ng-click="fillTextbox(citydata)">{{citydata}}</li>  
+              </ul>
+            </div>
+            <button class="button button-positive" ng-click="changeCity(city)">
+              Change
+            </button>
+          </div>
+          <div ng-show="load">
+            <h1><strong>Loading...</strong></h1>
+            <h2>Check the GPS and the internet are on</h2>
+          </div>
+          <div ng-hide="load">
+            <div align="center" ng-controller="weather" ng-app="starter" ng-hide="changed">
+              <h2 ng-hide="geolocation">Check the GPS and the internet are on</h2>
+              <div ng-show="geolocation">
+                <p>City: {{currentWeather.name}}</p>
+                <p>Temperature: {{currentWeather.main.temp}}</p>
+                <p>Humidity: {{currentWeather.main.humidity}}%</p>
+                <p>Description: {{currentWeather.weather[0].description}}</p>          
+              </div>  
+            </div>     
+          </div>  
+          <div ng-show="loading">
+            <div ng-hide="load">
+              <h1><strong>Loading...</strong></h1>
+            </div>
+          </div>
+          <div align="center" ng-controller="weather" ng-app="starter" ng-if="changed" ng-hide="loading">
+            <p>City: {{ newCurrentWeather.name}}</p>
+            <p>Temperature: {{newCurrentWeather.main.temp}}</p>
+            <p>Humidity: {{newCurrentWeather.main.humidity}}%</p>
+            <p>Description: {{newCurrentWeather.weather[0].description}}</p>          
+          </div>
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
